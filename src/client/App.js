@@ -27,7 +27,7 @@ class App extends React.Component {
     }
 
     // connect
-    this.socket = io('james-alphonse.com:8080');
+    this.socket = io('localhost:8080');
 
     // login
     this.socket.on('LOGIN_CONFIRM', function(userData) {
