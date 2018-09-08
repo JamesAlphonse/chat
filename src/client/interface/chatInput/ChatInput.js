@@ -1,4 +1,7 @@
+// react
 import React from 'react';
+
+// material-ui
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -37,9 +40,10 @@ class ChatInput extends React.Component {
   }
 
   handleChange = message => event => {
-    this.setState({
-      [message]: event.target.value,
-    });
+    if(event.target.value.length <= 50)
+      this.setState({
+        [message]: event.target.value,
+      });
   };
 
   onSendMessage = e => {
@@ -65,6 +69,7 @@ class ChatInput extends React.Component {
           autoFocus
           disabled={this.state.disabled}
         />
+
         <Button
           variant="contained"
           color="primary"

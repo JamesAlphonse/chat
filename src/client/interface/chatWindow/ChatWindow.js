@@ -15,6 +15,7 @@ const styles = theme => ({
     height: 'calc(100% - 137px)',
     backgroundColor: 'white',
     overflowY: 'auto',
+    overflowX: 'hidden',
     borderBottom: '1px solid gray',
   }
 });

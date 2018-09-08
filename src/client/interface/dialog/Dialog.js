@@ -29,9 +29,10 @@ export default class FormDialog extends React.Component {
   };
 
   onUsernameChange = e => {
-    this.setState({
-      username: e.target.value,
-    });
+    if(e.target.value.length <= 30)
+      this.setState({
+        username: e.target.value,
+      });
   }
 
   onSubmit = () => {

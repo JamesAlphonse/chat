@@ -1,11 +1,9 @@
+//SELECT * FROM history ORDER BY message_id DESC LIMIT 50 OFFSET 50;
+
 // reducer for chat room operations
 const init = {
-	log: [
-		{
-			username: 'AndromedaBot',
-			message: 'Welcome to my chat app! Please be kind to each other and have fun.'
-		}
-	],
+	historyMax: 50,
+	log: [],
 	users: []
 };
 
@@ -20,13 +18,18 @@ const chatRoomReducer = (state = init, action) => {
 				]
 			}
 		case 'RECEIVE_MESSAGE':
-			return {
+			let newState = {
 				...state,
 				log: [
 					...state.log,
 					action.payload
 				]
-			}
+			};
+
+			if(newState.historyMax < newState.log.length)
+				newState.log.shift();
+
+			return newState;
 		case 'ACTIVE_USERS':
 		return {
 			...state,

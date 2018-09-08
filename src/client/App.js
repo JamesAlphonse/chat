@@ -27,7 +27,21 @@ class App extends React.Component {
     }
 
     // connect
-    this.socket = io('localhost:8080');
+    // server: 142.93.200.128
+    this.socket = io('192.168.1.10:8080');
+
+    // history
+    this.socket.on('HISTORY', function(message_history) {
+      history(message_history);
+    });
+    // login action
+    const history = message_history => {
+      message_history.reverse();
+      message_history.forEach(message => {
+        this.props.receiveMessage(message);
+      });
+
+    };
 
     // login
     this.socket.on('LOGIN_CONFIRM', function(userData) {
