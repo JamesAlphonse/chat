@@ -11,10 +11,13 @@ server = app.listen(8080, function() {
 });
 
 // connect to database
+// host: "142.93.200.128",
+// production: socketPath: '/var/run/mysqld/mysqld.sock',
+// dev: host: 'localhost',
 var con = mysql.createConnection({
-  host: "localhost",
   user: "root",
   password: "cipher12",
+  socketPath: '/var/run/mysqld/mysqld.sock',
   database: 'chat'
 });
 
@@ -115,7 +118,7 @@ io.on('connection', (socket => {
 	socket.on('SEND_MESSAGE', message => {
 		console.log('USER MEESAGE: ' + message);
 		let userIndex = users.findIndex( function(x){ return x.socketID === socket.id });
-		if( userIndex >= 0 && message.length <= 50) {
+		if( userIndex >= 0 && message.length <= 200) {
 			let userData = users[userIndex];
 			let messageData = {
 				username: userData.username,

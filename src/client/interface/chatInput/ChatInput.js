@@ -40,7 +40,7 @@ class ChatInput extends React.Component {
   }
 
   handleChange = message => event => {
-    if(event.target.value.length <= 50)
+    if(event.target.value.length <= 200)
       this.setState({
         [message]: event.target.value,
       });
