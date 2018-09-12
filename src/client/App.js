@@ -28,7 +28,7 @@ class App extends React.Component {
 
     // connect
     // server: 142.93.200.128
-    this.socket = io('142.93.200.128:8080');
+    this.socket = io('localhost:8080');
 
     // history
     this.socket.on('HISTORY', function(message_history) {

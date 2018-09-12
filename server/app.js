@@ -18,7 +18,7 @@ server = app.listen(8080, function() {
 var con = mysql.createConnection({
   user: "root",
   password: "cipher12",
-  socketPath: '/var/run/mysqld/mysqld.sock',
+  host: 'localhost',
   database: 'chat'
 });
 
